@@ -1,0 +1,3 @@
+= Symbian Remote Debugging Experiments
+
+Depends on Qt and `libusb-compat`.
