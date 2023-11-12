@@ -1,3 +1,4 @@
 = Symbian Remote Debugging Experiments
 
-Depends on Qt and `libusb-compat`.
+`runonphone`::
+Lifted from Qt SDK 1.2.1; depends on Qt and `libusb-compat`.
