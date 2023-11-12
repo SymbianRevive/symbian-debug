@@ -716,7 +716,7 @@ bool OstChannel::isSequential() const
 qint64 OstChannel::readData(char *data, qint64 maxSize)
 {
     qint64 amount = qMin(maxSize, (qint64)d->m_dataBuffer.size());
-    qMemCopy(data, d->m_dataBuffer.constData(), amount);
+    memcpy(data, d->m_dataBuffer.constData(), amount);
     d->m_dataBuffer.remove(0, amount);
     return amount;
 }

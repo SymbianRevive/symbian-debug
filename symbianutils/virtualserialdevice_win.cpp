@@ -118,7 +118,7 @@ bool VirtualSerialDevice::open(OpenMode mode)
     Q_ASSERT(QThread::currentThread() == thread());
     if (isOpen()) return true;
 
-    d->portHandle = CreateFileA(windowsPortName(portName).toAscii(), GENERIC_READ|GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, NULL);
+    d->portHandle = CreateFileA(windowsPortName(portName).toLatin1(), GENERIC_READ|GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, NULL);
     if (d->portHandle == INVALID_HANDLE_VALUE) {
         setErrorString(tr("The port %1 could not be opened: %2").
                        arg(portName, winErrorMessage(GetLastError())));

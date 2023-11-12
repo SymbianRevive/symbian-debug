@@ -329,7 +329,7 @@ void CodaSignalHandler::handleDebugSessionControlStart(const Coda::CodaCommandRe
 {
     if (result.type == Coda::CodaCommandResult::SuccessReply) {
         d->codaDevice->sendRunProcessCommand(Coda::CodaCallback(this, &CodaSignalHandler::handleAppRunning),
-                                             d->appFileName.toAscii(),
+                                             d->appFileName.toLatin1(),
                                              d->commandLineArgs.split(' '));
         reportMessage(tr("Launching %1...").arg(QFileInfo(d->appFileName).fileName()));
     } else {
@@ -488,7 +488,7 @@ void CodaSignalHandler::initFileDownloading()
     }
 
     d->codaDevice->sendFileSystemOpenCommand(Coda::CodaCallback(this, &CodaSignalHandler::handleFileSystemOpen),
-                                             d->dlSrcFileName.toAscii(), Coda::CodaDevice::FileSystem_TCF_O_READ);
+                                             d->dlSrcFileName.toLatin1(), Coda::CodaDevice::FileSystem_TCF_O_READ);
     reportMessage(tr("Downloading %1...").arg(QFileInfo(d->dlSrcFileName).fileName()));
 }
 
@@ -501,8 +501,8 @@ void CodaSignalHandler::initFileInstallation()
 
     QString installationDrive = "C";
     d->codaDevice->sendSymbianInstallSilentInstallCommand(Coda::CodaCallback(this, &CodaSignalHandler::handleSymbianInstall),
-                                                          d->copyDstFileName.toAscii(),
-                                                          installationDrive.toAscii());
+                                                          d->copyDstFileName.toLatin1(),
+                                                          installationDrive.toLatin1());
     reportMessage(tr("Installing package \"%1\" on drive %2...").arg(QFileInfo(d->copyDstFileName).fileName(), installationDrive));
 }
 
@@ -519,7 +519,7 @@ void CodaSignalHandler::initFileSending()
             |Coda::CodaDevice::FileSystem_TCF_O_TRUNC;
     d->putWriteOk = false;
     d->codaDevice->sendFileSystemOpenCommand(Coda::CodaCallback(this, &CodaSignalHandler::handleFileSystemOpen),
-                                             d->copyDstFileName.toAscii(), flags);
+                                             d->copyDstFileName.toLatin1(), flags);
     reportMessage(tr("Copying %1...").arg(QFileInfo(d->copyDstFileName).fileName()));
 }
 

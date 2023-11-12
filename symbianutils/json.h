@@ -46,6 +46,7 @@
 
 #include <QtCore/QByteArray>
 #include <QtCore/QStringList>
+#include <QtCore/QVariant>
 #include <QtCore/QVector>
 
 namespace Coda {

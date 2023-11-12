@@ -74,7 +74,7 @@ bool VirtualSerialDevice::open(OpenMode mode)
 {
     if (isOpen()) return true;
 
-    d->portHandle = ::open(portName.toAscii().constData(), O_RDWR | O_NONBLOCK | O_NOCTTY);
+    d->portHandle = ::open(portName.toLatin1().constData(), O_RDWR | O_NONBLOCK | O_NOCTTY);
     if (d->portHandle == -1) {
         setErrorString(tr("The port %1 could not be opened: %2 (POSIX error %3)").
                        arg(portName, QString::fromLocal8Bit(strerror(errno))).arg(errno));
